@@ -121,7 +121,7 @@ export default function PeviChat() {
               Halo.. Saya Pevi 🐔
             </p>
             <p style={{ fontSize: '11px', color: '#666', margin: 0 }}>
-              Klik saya untuk chat!
+              Klik untuk chat dengan Resepsionis!
             </p>
             {/* Arrow pointing down to Pevi */}
             <span
