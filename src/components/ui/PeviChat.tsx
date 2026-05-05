@@ -17,6 +17,7 @@ interface Message {
  */
 export default function PeviChat() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -33,6 +34,14 @@ export default function PeviChat() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  /**
+   * Hide tooltip after 5 seconds.
+   */
+  useEffect(() => {
+    const timer = setTimeout(() => setShowTooltip(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   /**
    * Sends user message to Groq API and appends response.
@@ -85,39 +94,69 @@ export default function PeviChat() {
 
   return (
     <>
-      {/* Pevi Mascot Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 z-50 transition-transform hover:scale-110"
-        style={{ right: '96px' }}
-        aria-label="Chat dengan Pevi"
+      {/* Pevi Mascot Button — positioned left of WA bubble with gap */}
+      <div
+        className="fixed bottom-6 z-50"
+        style={{ right: '88px' }}
       >
-        <div className="relative">
+        {/* Tooltip bubble — auto hide after 5s */}
+        {showTooltip && !isOpen && (
+          <div
+            className="absolute bottom-full mb-3 right-0 whitespace-nowrap text-sm font-medium px-4 py-2 rounded-2xl rounded-br-none shadow-lg"
+            style={{
+              background: '#FFF3CD',
+              color: '#1a1a1a',
+              border: '1px solid #FFD700',
+              maxWidth: '180px',
+              whiteSpace: 'normal',
+              textAlign: 'center',
+            }}
+          >
+            Halo.. Saya Pevi 🐔
+            <br />
+            <span className="text-xs text-gray-500">Klik saya untuk chat!</span>
+            {/* Triangle pointer */}
+            <span
+              className="absolute -bottom-2 right-4 w-0 h-0"
+              style={{
+                borderLeft: '8px solid transparent',
+                borderRight: '8px solid transparent',
+                borderTop: '8px solid #FFF3CD',
+              }}
+            />
+          </div>
+        )}
+
+        {/* Pevi button — same size as WA bubble (h-14 w-14 = 56px) */}
+        <button
+          onClick={() => { setIsOpen(true); setShowTooltip(false); }}
+          className="relative flex items-center justify-center transition-transform hover:scale-110"
+          style={{
+            width: '56px',
+            height: '56px',
+          }}
+          aria-label="Chat dengan Pevi"
+        >
           {/* Pulse ring */}
-          <span className="absolute inset-0 animate-ping rounded-full bg-red-400 opacity-30"></span>
+          <span
+            className="absolute inset-0 animate-ping rounded-full opacity-30"
+            style={{ background: 'rgba(180,0,0,0.5)' }}
+          />
           <Image
             src="/pevi.gif"
             alt="Pevi - Maskot Sensasi Geprek 38"
-            width={64}
-            height={64}
+            width={56}
+            height={56}
             className="relative z-10 drop-shadow-lg"
+            style={{ width: '56px', height: '56px', objectFit: 'contain' }}
             unoptimized
           />
-          {/* Tooltip */}
-          <span
-            className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gray-900 px-3 py-1 text-xs text-white opacity-0 hover:opacity-100 transition-opacity pointer-events-none"
-          >
-            Tanya Pevi!
-          </span>
-        </div>
-      </button>
+        </button>
+      </div>
 
       {/* Chat Modal */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-end pb-24 pr-6"
-          onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
-        >
+        <div className="fixed inset-0 z-50 flex items-end justify-end pb-24 pr-6">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/30 backdrop-blur-sm"
@@ -180,7 +219,7 @@ export default function PeviChat() {
                     />
                   )}
                   <div
-                    className="max-w-[75%] rounded-2xl px-3 py-2 text-sm leading-relaxed"
+                    className="max-w-[75%] px-3 py-2 text-sm leading-relaxed"
                     style={{
                       background: msg.role === 'user' ? 'rgba(180,0,0,0.85)' : 'white',
                       color: msg.role === 'user' ? 'white' : '#1a1a1a',
@@ -199,7 +238,7 @@ export default function PeviChat() {
               {isLoading && (
                 <div className="flex justify-start">
                   <div
-                    className="flex gap-1 px-4 py-3 rounded-2xl bg-white shadow-sm"
+                    className="flex gap-1 px-4 py-3 bg-white shadow-sm"
                     style={{ borderRadius: '18px 18px 18px 4px' }}
                   >
                     <span className="w-2 h-2 rounded-full bg-red-400 animate-bounce" style={{ animationDelay: '0ms' }} />
