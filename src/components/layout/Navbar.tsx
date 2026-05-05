@@ -31,19 +31,20 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-8"
       style={{ background: 'transparent', pointerEvents: 'none' }}
     >
       {/* Pill Container */}
       <nav
-        className="inline-flex items-center rounded-full px-6 py-3"
+        className="relative flex items-center justify-between rounded-full px-8 py-4"
         style={{
+          width: '80%',
+          maxWidth: '1100px',
           background: 'rgba(180,0,0,0.85)',
           backdropFilter: 'blur(16px)',
           border: '1px solid rgba(255,255,255,0.2)',
           boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
           pointerEvents: 'auto',
-          gap: '48px',
         }}
       >
         {/* Logo Section */}
@@ -53,18 +54,18 @@ export default function Navbar() {
             alt="Sensasi Geprek 38 Logo"
             width={160}
             height={48}
-            className="h-8 w-auto object-contain"
+            className="h-10 w-auto object-contain"
             priority
           />
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center" style={{ gap: '24px' }}>
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white text-sm font-medium transition-colors duration-200 hover:text-yellow-300 ${
+              className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${
                 pathname === link.href ? 'text-yellow-300' : ''
               }`}
             >
