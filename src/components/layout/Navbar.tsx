@@ -15,7 +15,7 @@ const links = [
 ];
 
 /**
- * Responsive floating pill-style navbar with proportional layout.
+ * Responsive floating pill-style navbar with overlapping logo.
  * @returns JSX.Element
  */
 export default function Navbar() {
@@ -31,12 +31,12 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-8"
-      style={{ background: 'transparent', pointerEvents: 'none' }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center"
+      style={{ background: 'transparent', pointerEvents: 'none', paddingTop: '8px' }}
     >
       {/* Pill Container */}
       <nav
-        className="relative flex items-center justify-between rounded-full px-8 py-4"
+        className="relative rounded-full flex items-center"
         style={{
           width: '80%',
           maxWidth: '1100px',
@@ -45,22 +45,39 @@ export default function Navbar() {
           border: '1px solid rgba(255,255,255,0.2)',
           boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
           pointerEvents: 'auto',
+          paddingLeft: '140px',
+          paddingRight: '32px',
+          paddingTop: '10px',
+          paddingBottom: '10px',
         }}
       >
-        {/* Logo Section */}
-        <Link href="/" className="flex items-center">
+        {/* Overlapping Logo */}
+        <Link
+          href="/"
+          style={{
+            position: 'absolute',
+            left: '-10px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+            background: 'white',
+            borderRadius: '12px',
+            padding: '6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          }}
+        >
           <Image
             src="/web_logo.png"
             alt="Sensasi Geprek 38 Logo"
             width={160}
             height={48}
-            className="h-14 w-auto"
+            className="h-20 w-auto"
             priority
           />
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center" style={{ marginLeft: 'auto', gap: '32px' }}>
           {links.map((link) => (
             <Link
               key={link.name}
@@ -77,6 +94,7 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           className="md:hidden p-1 text-white focus:outline-none"
+          style={{ pointerEvents: 'auto' }}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
