@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GROQ_API_KEY;
+    const apiKey = process.env.NEXT_API_GROQ;
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
