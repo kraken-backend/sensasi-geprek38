@@ -46,7 +46,7 @@ export default function Navbar() {
           href="/"
           style={{
             position: 'absolute',
-            left: 0,
+            left: '20px',
             top: '50%',
             transform: 'translateY(-50%)',
             zIndex: 60,
@@ -90,9 +90,8 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${
-                  pathname === link.href ? 'text-yellow-300' : ''
-                }`}
+                className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
+                  }`}
               >
                 {link.name}
               </Link>
@@ -129,9 +128,8 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${
-                pathname === link.href ? 'text-yellow-300' : ''
-              }`}
+              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
+                }`}
             >
               {link.name}
             </Link>
