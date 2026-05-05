@@ -37,9 +37,9 @@ yarn-error.log*
 next-env.d.ts
 
 # folder
-/AGENTS.md
-/plan/
+AGENTS.md
+/plan/*
 *.log
 *.log_*
 *.md
-/.codebase
+.codebase
