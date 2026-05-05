@@ -20,7 +20,7 @@ const links = [
  */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   /**
@@ -28,7 +28,7 @@ export default function Navbar() {
    */
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY >= 50);
+      setIsScrolled(window.scrollY >= 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -45,23 +45,22 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[rgba(15,15,15,0.95)] backdrop-blur-md border-b border-white/10'
+        isScrolled
+          ? 'bg-[#0f0f0f]/95 backdrop-blur-md border-b border-white/10'
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="relative flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/web_logo.png"
               alt="Sensasi Geprek 38 Logo"
               width={160}
               height={48}
-              className={`h-10 md:h-12 w-auto object-contain transition-all duration-300 ${
-                !scrolled ? 'brightness-0 invert' : ''
-              }`}
+              className="h-10 md:h-12 w-auto object-contain"
+              style={{ filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
               priority
             />
           </Link>

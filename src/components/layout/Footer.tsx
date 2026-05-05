@@ -27,14 +27,14 @@ export default function Footer() {
           
           {/* Column 1 — Brand */}
           <div className="space-y-4">
-            <div className="relative h-12 w-48">
-              <Image
-                src="/web_logo.png"
-                alt={RESTAURANT.name}
-                fill
-                className="object-contain object-left brightness-0 invert"
-              />
-            </div>
+            <Image
+              src="/web_logo.png"
+              alt="Sensasi Geprek 38"
+              width={120}
+              height={48}
+              className="h-12 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
             <p className="text-gray-400 text-sm mt-2 max-w-xs">
               {RESTAURANT.tagline}
             </p>
