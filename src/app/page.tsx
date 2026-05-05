@@ -1,7 +1,7 @@
 // Path: src/app/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Utensils, Flame, ShieldCheck, MapPin, ExternalLink } from 'lucide-react';
+import { ChevronRight, Utensils, Flame, ShieldCheck, MapPin, ExternalLink, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import OpenStatus from '@/components/ui/OpenStatus';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
@@ -16,25 +16,37 @@ import { MenuData } from '@/types/menu';
  * @returns JSX.Element
  */
 export default async function Home() {
-  // Read menu data for preview
   const menuFilePath = path.join(process.cwd(), 'src/data/menu.json');
   const menuFileContent = fs.readFileSync(menuFilePath, 'utf8');
   const menuData: MenuData = JSON.parse(menuFileContent);
   
-  // Get first 3 items from the first category for preview
   const previewItems = menuData.categories[0]?.items.slice(0, 3) || [];
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#F5F0E8]">
-        {/* Abstract shapes background */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#CC1414]/5 rounded-l-full blur-3xl opacity-50 pointer-events-none transform translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#E06800]/5 rounded-r-full blur-3xl opacity-50 pointer-events-none transform -translate-x-1/4"></div>
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/menu/menu06.png"
+          alt="Sensasi Mie Goreng Geprek"
+          fill
+          priority
+          className="object-cover"
+        />
 
-        <div className="container mx-auto px-4 z-10 py-12 md:py-24">
-          <ScrollAnimation className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-            <div className="relative w-full max-w-md aspect-[3/1] mb-4">
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.65) 100%)'
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 text-center">
+          <ScrollAnimation className="flex flex-col items-center space-y-6">
+            <div className="relative w-48 md:w-64 aspect-[3/1]">
               <Image
                 src="/header_logo.png"
                 alt={RESTAURANT.name}
@@ -44,32 +56,36 @@ export default async function Home() {
               />
             </div>
             
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-white font-bold text-3xl md:text-5xl mb-4">
               {RESTAURANT.tagline}
             </h1>
             
-            <p className="text-lg text-gray-600 max-w-2xl">
-              Ayam geprek bumbu rempah warisan keluarga sejak 2019. Halal, pedas bisa diatur. 
-              Nikmati sensasi pedas yang nendang dari dalam!
+            <p className="text-white/90 text-base md:text-lg mb-6 max-w-2xl">
+              Ayam geprek bumbu rempah warisan keluarga sejak 2019. Halal, pedas bisa diatur.
             </p>
 
-            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl shadow-sm inline-block">
+            <div className="text-white">
               <OpenStatus />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">
-              <Button size="lg" className="rounded-full bg-[#CC1414] hover:bg-[#A50000] text-white h-14 px-8 text-lg" asChild>
+            <div className="flex gap-4 mt-6">
+              <Button className="bg-[#CC1414] text-white rounded-full px-8 py-3 hover:bg-[#A50000] transition" asChild>
                 <a href={RESTAURANT.gofood} target="_blank" rel="noopener noreferrer">
                   Pesan via GoFood
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white h-14 px-8 text-lg" asChild>
+              <Button variant="outline" className="border-2 border-white text-white rounded-full px-8 py-3 hover:bg-white hover:text-gray-900 transition" asChild>
                 <a href={RESTAURANT.whatsappLink} target="_blank" rel="noopener noreferrer">
                   Hubungi Kami
                 </a>
               </Button>
             </div>
           </ScrollAnimation>
+        </div>
+
+        {/* Scroll Down Arrow */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce text-white">
+          <ChevronDown className="h-8 w-8" />
         </div>
       </section>
 

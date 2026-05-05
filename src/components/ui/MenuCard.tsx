@@ -1,9 +1,8 @@
 // Path: src/components/ui/MenuCard.tsx
+'use client';
+
 import Image from 'next/image';
 import { MenuItem } from '@/types/menu';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { RESTAURANT } from '@/lib/constants';
 
 /**
@@ -12,67 +11,54 @@ import { RESTAURANT } from '@/lib/constants';
  * @returns JSX.Element
  */
 export default function MenuCard({ item }: { item: MenuItem }) {
-  // Format price to IDR
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
   return (
-    <Card className="overflow-hidden group hover:shadow-md transition-shadow duration-300">
-      <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition relative overflow-hidden">
+      {/* Image Container */}
+      <div className="relative aspect-video w-full">
         <Image
           src={item.image}
           alt={item.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover rounded-t-xl"
           loading="lazy"
         />
+
+        {/* Popular Badge */}
+        {item.isPopular && (
+          <span className="absolute top-2 left-2 bg-[#CC1414] text-white text-xs px-2 py-1 rounded-full">
+            Terlaris
+          </span>
+        )}
+
+        {/* Sold Out Overlay */}
         {!item.available && (
-          <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
-            <span className="text-white font-bold text-lg tracking-widest uppercase">Habis</span>
+          <div className="absolute inset-0 bg-black/50 rounded-t-xl flex items-center justify-center">
+            <span className="text-white font-bold">Habis</span>
           </div>
         )}
-        {item.isPopular && item.available && (
-          <Badge className="absolute top-2 right-2 bg-[#E06800] hover:bg-[#E06800]/90">
-            Terlaris
-          </Badge>
-        )}
       </div>
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start gap-2">
-          <CardTitle className="text-lg font-bold leading-tight line-clamp-2">
-            {item.name}
-          </CardTitle>
-          <span className="font-semibold text-[#CC1414] whitespace-nowrap">
-            {formatPrice(item.price)}
-          </span>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <CardDescription className="line-clamp-2 text-sm text-gray-600">
+
+      {/* Card Body */}
+      <div className="p-3">
+        <p className="font-semibold text-gray-900 text-sm line-clamp-2">
+          {item.name}
+        </p>
+        <p className="text-gray-500 text-xs line-clamp-2 mt-1">
           {item.description}
-        </CardDescription>
-      </CardContent>
-      <CardFooter>
-        <Button 
-          className="w-full rounded-full bg-[#CC1414] hover:bg-[#A50000] text-white" 
-          disabled={!item.available}
-          asChild={item.available}
+        </p>
+        <p className="font-bold text-gray-900 text-sm mt-2">
+          Rp {item.price.toLocaleString('id-ID')}
+        </p>
+        <a
+          href={RESTAURANT.gofood}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full mt-3 rounded-full border border-[#CC1414] text-[#CC1414] text-sm py-2 block text-center hover:bg-[#CC1414] hover:text-white transition"
         >
-          {item.available ? (
-            <a href={RESTAURANT.gofood} target="_blank" rel="noopener noreferrer">
-              Pesan
-            </a>
-          ) : (
-            <span>Tidak Tersedia</span>
-          )}
-        </Button>
-      </CardFooter>
-    </Card>
+          Pesan
+        </a>
+      </div>
+    </div>
   );
 }
