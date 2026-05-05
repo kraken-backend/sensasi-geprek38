@@ -36,10 +36,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# folder
-AGENTS.md
-/plan/*
+# logs
 *.log
 *.log_*
-*.md
+
+# antigravity/agent internals
+/plan/
 .codebase
