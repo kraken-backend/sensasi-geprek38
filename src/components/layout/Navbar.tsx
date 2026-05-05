@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-8"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-8"
       style={{ background: 'transparent', pointerEvents: 'none' }}
     >
       {/* Outer wrapper */}
