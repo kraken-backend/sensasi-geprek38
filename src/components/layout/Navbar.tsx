@@ -56,12 +56,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/web_logo.png"
+              src={isScrolled ? '/web_logo.png' : '/header_logo.png'}
               alt="Sensasi Geprek 38 Logo"
               width={160}
               height={48}
               className="h-10 md:h-12 w-auto object-contain"
-              style={{ filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
               priority
             />
           </Link>
