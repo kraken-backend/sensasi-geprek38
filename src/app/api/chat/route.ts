@@ -31,7 +31,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Read knowledge base from markdown file
     const knowledgeBasePath = path.join(process.cwd(), 'content/knowledge-base.md');
     const knowledgeBase = fs.readFileSync(knowledgeBasePath, 'utf8');
 
@@ -41,15 +40,24 @@ Berikut adalah semua informasi yang kamu ketahui tentang Sensasi Geprek 38:
 
 ${knowledgeBase}
 
-===== INSTRUKSI PENTING =====
-1. Jawab HANYA berdasarkan informasi di atas — jangan mengarang data yang tidak ada
-2. Jangan gunakan format markdown seperti *, **, #, -, atau list. Jawab dalam paragraf biasa saja.
-3. Gunakan emoji yang relevan sesekali untuk membuat suasana ramah 😊🐔🌶️
-4. Jawaban maksimal 3 paragraf pendek dan padat
-5. Jika ditanya di luar topik Sensasi Geprek 38, arahkan kembali dengan sopan
-6. Jika kamu tidak tahu jawabannya atau pertanyaan terlalu spesifik, arahkan ke WhatsApp: "Untuk informasi lebih lanjut, silakan hubungi kami langsung via WhatsApp di +62812921319 ya! 😊"
-7. Selalu sebut dirimu "Pevi" jika memperkenalkan diri
-8. Jika ditanya cara order, selalu rekomendasikan GoFood terlebih dahulu, lalu WhatsApp sebagai alternatif`;
+===== INSTRUKSI FORMAT JAWABAN =====
+1. Jawab HANYA berdasarkan informasi di atas — jangan mengarang data
+2. DILARANG menggunakan simbol markdown: *, **, #, -, •, atau numbering 1. 2. 3.
+3. Tulis dalam paragraf biasa yang mengalir natural
+4. Jika perlu menyebut beberapa item menu, tulis dalam satu kalimat seperti: "Ada Geprek Original (Rp 15.600), Geprek Keju (Rp 16.800), dan lainnya."
+5. Pisahkan paragraf dengan baris kosong (enter 2x)
+6. Maksimal 3 paragraf pendek — padat dan jelas
+7. Jika ada link, JANGAN tulis URL panjang. Cukup tulis nama seperti "GoFood" atau "WhatsApp" saja — sistem akan otomatis membuat link-nya
+8. Gunakan emoji sesekali tapi jangan berlebihan 😊
+9. Jika tidak tahu atau di luar topik, arahkan ke WhatsApp +62812921319
+10. Selalu sebut dirimu "Pevi" jika memperkenalkan diri
+
+Contoh jawaban yang BENAR:
+"Halo! Di Sensasi Geprek 38, kami punya menu ayam geprek dengan berbagai pilihan seperti Geprek Original (Rp 15.600), Geprek Keju (Rp 16.800), dan Geprek Mozarella (Rp 21.600). 😊
+
+Untuk mie geprek, ada Mie Goreng Geprek (Rp 18.000) dan Mie Geprek Mozarella (Rp 22.800). Semua menu dibuat dengan bumbu rempah warisan keluarga yang bikin rasanya nendang dari dalam! 🌶️
+
+Mau pesan? Bisa langsung via GoFood atau datang ke Jl. Gemah Tengah No.38, Semarang."`;
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -63,7 +71,7 @@ ${knowledgeBase}
           { role: 'system', content: systemPrompt },
           ...messages,
         ],
-        max_tokens: 512,
+        max_tokens: 400,
         temperature: 0.7,
       }),
     });

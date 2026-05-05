@@ -200,7 +200,23 @@ export default function PeviChat() {
                       boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
                     }}
                   >
-                    {msg.content}
+                    {msg.content.split('\n').map((line, li) => {
+                      if (!line.trim()) return <br key={li} />;
+                      const urlRegex = /(https?:\/\/[^\s]+)/g;
+                      const parts = line.split(urlRegex);
+                      return (
+                        <p key={li} style={{ margin: li === 0 ? 0 : '4px 0 0 0' }}>
+                          {parts.map((part, pi) =>
+                            /^https?:\/\//.test(part) ? (
+                              <a key={pi} href={part} target="_blank" rel="noopener noreferrer"
+                                style={{ color: msg.role === 'user' ? '#FFD700' : '#CC1414', textDecoration: 'underline' }}>
+                                Buka Link
+                              </a>
+                            ) : part
+                          )}
+                        </p>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
