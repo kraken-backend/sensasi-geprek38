@@ -15,25 +15,12 @@ const links = [
 ];
 
 /**
- * Responsive navbar with scroll-aware transparent to dark effect.
+ * Responsive navbar with dark transparent background.
  * @returns JSX.Element
  */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  /**
-   * Handles scroll event to toggle transparent vs dark background.
-   */
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY >= 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   /**
    * Closes mobile menu when route changes.
@@ -44,11 +31,11 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: isScrolled ? 'rgba(15,15,15,0.95)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.1)' : 'none',
+        background: 'rgba(15,15,15,0.85)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <div className="container mx-auto px-4 md:px-6 py-3">
@@ -56,7 +43,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src={isScrolled ? '/web_logo.png' : '/header_logo.png'}
+              src="/web_logo.png"
               alt="Sensasi Geprek 38 Logo"
               width={160}
               height={48}

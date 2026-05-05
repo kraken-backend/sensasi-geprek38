@@ -46,16 +46,6 @@ export default async function Home() {
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 text-center">
           <ScrollAnimation className="flex flex-col items-center space-y-6">
-            <div className="relative w-48 md:w-64 aspect-[3/1]">
-              <Image
-                src="/header_logo.png"
-                alt={RESTAURANT.name}
-                fill
-                priority
-                className="object-contain"
-              />
-            </div>
-            
             <h1 className="text-white font-bold text-3xl md:text-5xl mb-4">
               {RESTAURANT.tagline}
             </h1>
