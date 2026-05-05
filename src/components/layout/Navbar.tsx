@@ -15,7 +15,7 @@ const links = [
 ];
 
 /**
- * Responsive floating pill-style navbar.
+ * Responsive floating pill-style navbar with proportional layout.
  * @returns JSX.Element
  */
 export default function Navbar() {
@@ -31,21 +31,22 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 pt-4 px-4"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6"
       style={{ background: 'transparent', pointerEvents: 'none' }}
     >
-      {/* Pill Navbar */}
-      <div
-        className="max-w-[900px] mx-auto rounded-full px-6 py-3 flex items-center justify-between"
+      {/* Pill Container */}
+      <nav
+        className="inline-flex items-center rounded-full px-6 py-3"
         style={{
           background: 'rgba(180,0,0,0.85)',
           backdropFilter: 'blur(16px)',
           border: '1px solid rgba(255,255,255,0.2)',
           boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
           pointerEvents: 'auto',
+          gap: '48px',
         }}
       >
-        {/* Logo */}
+        {/* Logo Section */}
         <Link href="/" className="flex items-center">
           <Image
             src="/web_logo.png"
@@ -57,20 +58,22 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Desktop Nav Links */}
+        <div className="hidden md:flex items-center" style={{ gap: '24px' }}>
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-white text-sm font-medium transition-colors duration-200 hover:text-yellow-300"
+              className={`text-white text-sm font-medium transition-colors duration-200 hover:text-yellow-300 ${
+                pathname === link.href ? 'text-yellow-300' : ''
+              }`}
             >
               {link.name}
             </Link>
           ))}
-        </nav>
+        </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Hamburger */}
         <button
           className="md:hidden p-1 text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -78,32 +81,35 @@ export default function Navbar() {
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-      </div>
+      </nav>
 
       {/* Mobile Dropdown */}
       <div
-        className="md:hidden transition-all duration-300 origin-top overflow-hidden"
+        className="absolute top-full left-1/2 -translate-x-1/2 md:hidden transition-all duration-300 overflow-hidden text-center"
         style={{
           background: 'rgba(160,0,0,0.95)',
           backdropFilter: 'blur(12px)',
           borderRadius: '16px',
           marginTop: '8px',
-          padding: '12px',
+          padding: '16px',
+          minWidth: '200px',
           pointerEvents: 'auto',
           maxHeight: isOpen ? '16rem' : '0',
         }}
       >
-        <nav className="flex flex-col">
+        <div className="flex flex-col" style={{ gap: '12px' }}>
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="py-3 px-2 text-base font-medium text-white transition-colors duration-200 hover:text-yellow-300 rounded-lg"
+              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${
+                pathname === link.href ? 'text-yellow-300' : ''
+              }`}
             >
               {link.name}
             </Link>
           ))}
-        </nav>
+        </div>
       </div>
     </div>
   );
