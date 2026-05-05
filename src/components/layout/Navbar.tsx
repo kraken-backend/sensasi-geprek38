@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       {/* Pill Container */}
       <nav
-        className="relative flex items-center justify-between rounded-full px-8 py-4"
+        className="relative flex items-center justify-between rounded-full px-4 py-2"
         style={{
           width: '80%',
           maxWidth: '1100px',
