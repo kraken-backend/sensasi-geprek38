@@ -18,6 +18,7 @@ interface Message {
 export default function PeviChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
+  const [tooltipVisible, setTooltipVisible] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -36,11 +37,13 @@ export default function PeviChat() {
   }, [messages]);
 
   /**
-   * Hide tooltip after 5 seconds.
+   * Looping tooltip visibility every 2 seconds.
    */
   useEffect(() => {
-    const timer = setTimeout(() => setShowTooltip(false), 5000);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setTooltipVisible((prev) => !prev);
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
 
   /**
@@ -97,12 +100,12 @@ export default function PeviChat() {
       {/* Pevi Mascot Button — positioned left of WA bubble with gap */}
       <div
         className="fixed bottom-6 z-50"
-        style={{ right: '88px' }}
+        style={{ right: '264px' }}
       >
         {/* Tooltip bubble — auto hide after 5s */}
         {showTooltip && !isOpen && (
           <div
-            className="absolute bottom-full mb-3 right-0 whitespace-nowrap text-sm font-medium px-4 py-2 rounded-2xl rounded-br-none shadow-lg"
+            className="absolute bottom-full mb-3 right-0 text-sm font-medium px-4 py-2 rounded-2xl rounded-br-none shadow-lg transition-opacity duration-500"
             style={{
               background: '#FFF3CD',
               color: '#1a1a1a',
@@ -110,6 +113,7 @@ export default function PeviChat() {
               maxWidth: '180px',
               whiteSpace: 'normal',
               textAlign: 'center',
+              opacity: tooltipVisible ? 1 : 0,
             }}
           >
             Halo.. Saya Pevi 🐔
@@ -132,8 +136,8 @@ export default function PeviChat() {
           onClick={() => { setIsOpen(true); setShowTooltip(false); }}
           className="relative flex items-center justify-center transition-transform hover:scale-110"
           style={{
-            width: '56px',
-            height: '56px',
+            width: '224px',
+            height: '224px',
           }}
           aria-label="Chat dengan Pevi"
         >
@@ -145,10 +149,10 @@ export default function PeviChat() {
           <Image
             src="/pevi.gif"
             alt="Pevi - Maskot Sensasi Geprek 38"
-            width={56}
-            height={56}
+            width={224}
+            height={224}
             className="relative z-10 drop-shadow-lg"
-            style={{ width: '56px', height: '56px', objectFit: 'contain' }}
+            style={{ width: '224px', height: '224px', objectFit: 'contain' }}
             unoptimized
           />
         </button>
