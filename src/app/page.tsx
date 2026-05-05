@@ -64,8 +64,10 @@ export default async function Home() {
               Ayam geprek bumbu rempah warisan keluarga sejak 2019. Halal, pedas bisa diatur.
             </p>
 
-            <div className="text-white">
-              <OpenStatus />
+            <div className="flex justify-center my-4">
+              <div className="bg-black/40 backdrop-blur-sm rounded-full px-6 py-2">
+                <OpenStatus />
+              </div>
             </div>
 
             <div className="flex gap-4 mt-6">

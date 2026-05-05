@@ -44,11 +44,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0f0f0f]/95 backdrop-blur-md border-b border-white/10'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: isScrolled ? 'rgba(15,15,15,0.95)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.1)' : 'none',
+      }}
     >
       <div className="container mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
@@ -71,11 +72,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`font-medium text-sm tracking-wide transition-colors hover:text-[#CC1414] ${
-                  pathname === link.href
-                    ? 'text-[#CC1414]'
-                    : 'text-white'
-                }`}
+                className="font-medium text-sm tracking-wide text-white transition-colors duration-200 hover:text-[#CC1414]"
               >
                 {link.name}
               </Link>
@@ -95,18 +92,20 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden bg-[#0f0f0f]/95 backdrop-blur-md border-t border-white/10 transition-all duration-300 origin-top overflow-hidden ${
-          isOpen ? 'max-h-64' : 'max-h-0'
-        }`}
+        className="md:hidden transition-all duration-300 origin-top overflow-hidden"
+        style={{
+          background: 'rgba(15,15,15,0.95)',
+          backdropFilter: 'blur(12px)',
+          borderTop: '1px solid rgba(255,255,255,0.1)',
+          maxHeight: isOpen ? '16rem' : '0',
+        }}
       >
         <nav className="flex flex-col px-4 py-2">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`py-3 px-2 text-base font-medium border-b border-white/10 last:border-0 transition-colors ${
-                pathname === link.href ? 'text-[#CC1414]' : 'text-white hover:text-[#CC1414]'
-              }`}
+              className="py-3 px-2 text-base font-medium text-white transition-colors duration-200 hover:text-[#CC1414] border-b border-white/10 last:border-0"
             >
               {link.name}
             </Link>

@@ -30,9 +30,9 @@ export default function Footer() {
             <Image
               src="/web_logo.png"
               alt="Sensasi Geprek 38"
-              width={120}
-              height={48}
-              className="h-12 w-auto"
+              width={160}
+              height={64}
+              className="h-14 w-auto object-contain"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
             <p className="text-gray-400 text-sm mt-2 max-w-xs">

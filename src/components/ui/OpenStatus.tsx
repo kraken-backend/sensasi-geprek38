@@ -96,10 +96,10 @@ export default function OpenStatus() {
 
   return (
     <div className="flex items-center space-x-2">
-      <Badge variant={status.isOpen ? 'default' : 'destructive'} className={status.isOpen ? 'bg-[#25D366] hover:bg-[#25D366]/90' : ''}>
+      <Badge variant={status.isOpen ? 'default' : 'destructive'} className={`text-sm font-semibold ${status.isOpen ? 'bg-[#25D366] hover:bg-[#25D366]/90' : ''}`}>
         ● {status.isOpen ? 'Buka Sekarang' : 'Sedang Tutup'}
       </Badge>
-      <span className="text-sm text-gray-600">{status.message}</span>
+      <span className="text-sm text-white font-medium">{status.message}</span>
     </div>
   );
 }
