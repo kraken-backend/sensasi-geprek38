@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       {/* Pill Container */}
       <nav
-        className="relative flex items-center justify-between rounded-full px-8 py-1"
+        className="relative flex items-center justify-between rounded-full px-8 py-3"
         style={{
           width: '80%',
           maxWidth: '1100px',
@@ -48,7 +48,7 @@ export default function Navbar() {
         }}
       >
         {/* Logo Section */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/web_logo.png"
             alt="Sensasi Geprek 38 Logo"
