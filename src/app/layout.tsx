@@ -6,6 +6,7 @@ import { SEO, RESTAURANT } from '@/lib/constants';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
+import PeviChat from '@/components/ui/PeviChat';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -110,6 +111,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <FloatingWhatsApp />
+        <PeviChat />
       </body>
     </html>
   );
