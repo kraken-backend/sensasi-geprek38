@@ -128,19 +128,17 @@ export default async function Home() {
       </section>
 
       {/* Menu Preview Section */}
-      <section className="py-20 bg-[#F5F0E8]/30">
+      <section className="pt-16 pb-12 bg-[#F5F0E8]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <ScrollAnimation>
-              <h2 className="text-3xl font-bold text-gray-900">Menu Andalan</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Menu Andalan</h2>
               <div className="w-24 h-1 bg-[#CC1414] mt-4 rounded-full"></div>
             </ScrollAnimation>
             <ScrollAnimation delay={200} className="mt-6 md:mt-0">
-              <Button variant="ghost" className="text-[#CC1414] hover:text-[#A50000] hover:bg-[#CC1414]/10 group" asChild>
-                <Link href="/menu">
-                  Lihat Semua Menu <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+              <Link href="/menu" className="text-gray-900 font-semibold text-base border border-gray-900 px-4 py-2 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200 inline-flex items-center">
+                Lihat Semua Menu <ChevronRight className="ml-2 h-4 w-4" />
+              </Link>
             </ScrollAnimation>
           </div>
 
@@ -201,7 +199,7 @@ export default async function Home() {
                   Buka di Maps
                 </a>
               </Button>
-              <Button size="lg" className="rounded-full bg-[#E06800] text-white hover:bg-[#E06800]/90 h-14 px-8 text-lg font-bold shadow-lg" asChild>
+              <Button size="lg" className="rounded-full bg-[#00AE11] text-white h-14 px-8 text-lg font-bold shadow-lg hover:bg-[#009A0F] transition" asChild>
                 <a href={RESTAURANT.gofood} target="_blank" rel="noopener noreferrer">
                   Pesan GoFood
                 </a>
