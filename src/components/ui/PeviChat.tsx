@@ -92,7 +92,7 @@ export default function PeviChat() {
       <div
         className="fixed z-50"
         style={{
-          bottom: '-80px',
+          bottom: '-50px',
           right: '104px',
           width: '224px',
           height: '224px',
