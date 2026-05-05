@@ -93,7 +93,7 @@ export default function PeviChat() {
         className="fixed z-50"
         style={{
           bottom: '-50px',
-          left: '24px',
+          right: '90px',
           width: '224px',
           height: '224px',
         }}
@@ -103,7 +103,7 @@ export default function PeviChat() {
           <div
             className="absolute transition-opacity duration-500"
             style={{
-              bottom: '180px',
+              bottom: '100px',
               left: '50%',
               transform: 'translateX(-50%)',
               opacity: tooltipVisible ? 1 : 0,
@@ -165,7 +165,7 @@ export default function PeviChat() {
 
       {/* Chat Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-end pb-24 pr-6">
+        <div className="fixed inset-0 z-50 flex items-end justify-start pb-24 pl-6">
           <div
             className="absolute inset-0 bg-black/30 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
