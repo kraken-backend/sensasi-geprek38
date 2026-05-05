@@ -15,7 +15,7 @@ const links = [
 ];
 
 /**
- * Responsive floating pill-style navbar with proportional layout.
+ * Responsive floating pill-style navbar with logo popping out.
  * @returns JSX.Element
  */
 export default function Navbar() {
@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       {/* Pill Container */}
       <nav
-        className="relative flex items-center justify-between rounded-full px-8 py-4"
+        className="relative flex items-center rounded-full"
         style={{
           width: '80%',
           maxWidth: '1100px',
@@ -45,28 +45,49 @@ export default function Navbar() {
           border: '1px solid rgba(255,255,255,0.2)',
           boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
           pointerEvents: 'auto',
+          paddingTop: '10px',
+          paddingBottom: '10px',
+          paddingLeft: '180px',
+          paddingRight: '32px',
         }}
       >
-        {/* Logo Section */}
-        <Link href="/" className="flex items-center">
+        {/* Logo — pops out from pill (top & bottom) */}
+        <Link
+          href="/"
+          style={{
+            position: 'absolute',
+            left: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+            background: 'white',
+            borderRadius: '12px',
+            padding: '4px 8px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
           <Image
             src="/web_logo.png"
             alt="Sensasi Geprek 38 Logo"
-            width={160}
-            height={48}
-            className="h-14 w-auto"
+            width={150}
+            height={80}
+            className="w-auto"
+            style={{ height: '70px' }}
             priority
           />
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8" style={{ marginLeft: 'auto' }}>
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
-                }`}
+              className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${
+                pathname === link.href ? 'text-yellow-300' : ''
+              }`}
             >
               {link.name}
             </Link>
@@ -76,6 +97,7 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           className="md:hidden p-1 text-white focus:outline-none"
+          style={{ marginLeft: 'auto' }}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -102,8 +124,9 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
-                }`}
+              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${
+                pathname === link.href ? 'text-yellow-300' : ''
+              }`}
             >
               {link.name}
             </Link>
