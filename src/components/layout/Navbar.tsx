@@ -7,9 +7,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
+const links = [
+  { name: 'Beranda', href: '/' },
+  { name: 'Menu', href: '/menu' },
+  { name: 'Tentang', href: '/about' },
+  { name: 'Kontak', href: '/contact' },
+];
+
 /**
- * Responsive navbar with mobile hamburger menu.
- * Sticky with backdrop blur on scroll.
+ * Responsive navbar with scroll-aware transparent to dark effect.
  * @returns JSX.Element
  */
 export default function Navbar() {
@@ -17,41 +23,45 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  const links = [
-    { name: 'Beranda', href: '/' },
-    { name: 'Menu', href: '/menu' },
-    { name: 'Tentang', href: '/about' },
-    { name: 'Kontak', href: '/contact' },
-  ];
-
+  /**
+   * Handles scroll event to toggle transparent vs dark background.
+   */
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY >= 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  /**
+   * Closes mobile menu when route changes.
+   */
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-4'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[rgba(15,15,15,0.95)] backdrop-blur-md border-b border-white/10'
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="relative flex items-center h-10 w-40">
+          {/* Logo */}
+          <Link href="/" className="relative flex items-center">
             <Image
               src="/web_logo.png"
               alt="Sensasi Geprek 38 Logo"
-              fill
-              className="object-contain object-left"
+              width={160}
+              height={48}
+              className={`h-10 md:h-12 w-auto object-contain transition-all duration-300 ${
+                !scrolled ? 'brightness-0 invert' : ''
+              }`}
               priority
             />
           </Link>
@@ -62,8 +72,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-[#CC1414] ${
-                  pathname === link.href ? 'text-[#CC1414] underline underline-offset-4 decoration-2' : 'text-gray-700'
+                className={`font-medium text-sm tracking-wide transition-colors hover:text-[#CC1414] ${
+                  pathname === link.href
+                    ? 'text-[#CC1414]'
+                    : 'text-white'
                 }`}
               >
                 {link.name}
@@ -73,7 +85,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-gray-700 hover:text-[#CC1414] focus:outline-none"
+            className="md:hidden p-2 text-white focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -84,8 +96,8 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-all duration-300 origin-top overflow-hidden ${
-          isOpen ? 'max-h-64 border-t' : 'max-h-0'
+        className={`md:hidden bg-[#0f0f0f]/95 backdrop-blur-md border-t border-white/10 transition-all duration-300 origin-top overflow-hidden ${
+          isOpen ? 'max-h-64' : 'max-h-0'
         }`}
       >
         <nav className="flex flex-col px-4 py-2">
@@ -93,8 +105,8 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`py-3 px-2 text-base font-medium border-b border-gray-100 last:border-0 ${
-                pathname === link.href ? 'text-[#CC1414]' : 'text-gray-700'
+              className={`py-3 px-2 text-base font-medium border-b border-white/10 last:border-0 transition-colors ${
+                pathname === link.href ? 'text-[#CC1414]' : 'text-white hover:text-[#CC1414]'
               }`}
             >
               {link.name}
