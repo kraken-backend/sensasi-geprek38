@@ -45,7 +45,7 @@ export default function Navbar() {
           border: '1px solid rgba(255,255,255,0.2)',
           boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
           pointerEvents: 'auto',
-          paddingLeft: '140px',
+          paddingLeft: '170px',
           paddingRight: '32px',
           paddingTop: '10px',
           paddingBottom: '10px',
@@ -56,7 +56,7 @@ export default function Navbar() {
           href="/"
           style={{
             position: 'absolute',
-            left: '-10px',
+            left: '-8px',
             top: '50%',
             transform: 'translateY(-50%)',
             zIndex: 10,
@@ -82,9 +82,8 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${
-                pathname === link.href ? 'text-yellow-300' : ''
-              }`}
+              className={`text-white text-base font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
+                }`}
             >
               {link.name}
             </Link>
@@ -121,9 +120,8 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${
-                pathname === link.href ? 'text-yellow-300' : ''
-              }`}
+              className={`text-white font-medium transition-colors duration-200 hover:text-yellow-300 ${pathname === link.href ? 'text-yellow-300' : ''
+                }`}
             >
               {link.name}
             </Link>
