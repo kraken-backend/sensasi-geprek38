@@ -103,7 +103,7 @@ export default function PeviChat() {
           <div
             className="absolute transition-opacity duration-500"
             style={{
-              bottom: '150px',
+              bottom: '190px',
               left: '50%',
               transform: 'translateX(-50%)',
               opacity: tooltipVisible ? 1 : 0,
