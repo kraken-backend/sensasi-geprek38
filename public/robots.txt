@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sensasigeprek38.com
+
+# Sitemaps
+Sitemap: https://sensasigeprek38.com/sitemap.xml

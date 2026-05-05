@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "id": "ayam-geprek",
+      "name": "Ayam Geprek",
+      "items": [
+        {
+          "id": "geprek-original",
+          "name": "Ayam Geprek Original",
+          "description": "Ayam geprek bumbu rempah khas keluarga, pedas bisa diatur sesuai selera",
+          "price": 0,
+          "image": "/menu/placeholder.jpg",
+          "available": true,
+          "isPopular": true
+        }
+      ]
+    }
+  ]
+}
