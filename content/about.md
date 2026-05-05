@@ -23,7 +23,7 @@ Kini lebih dari Enam tahun berjalan, Sensasi Geprek 38 telah dikenal di berbagai
 - **Pemilik:** Yuki Hendrawan Arfianto
 - **Berdiri:** 23 Oktober 2019
 - **Alamat:** Jl. Gemah Tengah No.38, Gemah, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50246
-- **WhatsApp:** +62812921319
+- **WhatsApp:** +628122921319
 - **Instagram:** [@sensasigeprek](https://www.instagram.com/sensasigeprek)
 - **GoFood:** [Order Sekarang](https://gofood.co.id/semarang/restaurant/ayam-geprek-sensasi-geprek-38-gemah-2e7cdd62-7060-4578-9027-64adf3b74763)
 - **Maps:** [Lihat Lokasi](https://maps.app.goo.gl/mWe5xx7mkNUf7Z1b8)
