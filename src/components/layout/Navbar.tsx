@@ -33,9 +33,9 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: 'rgba(15,15,15,0.85)',
+        background: 'rgba(180,0,0,0.82)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        borderBottom: '1px solid rgba(255,255,255,0.15)',
       }}
     >
       <div className="container mx-auto px-4 md:px-6 py-3">
@@ -58,7 +58,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-medium text-sm tracking-wide text-white transition-colors duration-200 hover:text-[#CC1414]"
+                className="font-medium text-sm tracking-wide text-white transition-colors duration-200 hover:text-yellow-300"
               >
                 {link.name}
               </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
       <div
         className="md:hidden transition-all duration-300 origin-top overflow-hidden"
         style={{
-          background: 'rgba(15,15,15,0.95)',
+          background: 'rgba(160,0,0,0.95)',
           backdropFilter: 'blur(12px)',
           borderTop: '1px solid rgba(255,255,255,0.1)',
           maxHeight: isOpen ? '16rem' : '0',
@@ -91,7 +91,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="py-3 px-2 text-base font-medium text-white transition-colors duration-200 hover:text-[#CC1414] border-b border-white/10 last:border-0"
+              className="py-3 px-2 text-base font-medium text-white transition-colors duration-200 hover:text-yellow-300 border-b border-white/10 last:border-0"
             >
               {link.name}
             </Link>
