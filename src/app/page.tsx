@@ -74,7 +74,7 @@ export default async function Home() {
                   Pesan via GoFood
                 </a>
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white rounded-full px-8 py-3 hover:bg-white hover:text-gray-900 transition" asChild>
+              <Button className="border-2 border-white text-white bg-transparent rounded-full px-8 py-3 hover:bg-white hover:text-gray-900 transition-all duration-200 font-semibold" asChild>
                 <a href={RESTAURANT.whatsappLink} target="_blank" rel="noopener noreferrer">
                   Hubungi Kami
                 </a>
