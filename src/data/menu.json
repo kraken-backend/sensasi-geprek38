@@ -7,36 +7,45 @@
         {
           "id": "geprek-original",
           "name": "Sensasi Geprek Original",
-          "description": "Ayam geprek bumbu rempah khas keluarga, pedas bisa diatur sesuai selera",
+          "description": "Sensasi geprek original, ayam yang sangat empuk dengan topping sambal tumis khas Sensasi Geprek 38, yang pasti bikin ketagihan akan sensasi pedasnya. Pedas bisa disesuaikan selera, level 1-5",
           "price": 15600,
-          "image": "/menu/menu01.png",
+          "image": "/menu/menu10-sensasi_geprek_original.png",
           "available": true,
           "isPopular": true
         },
         {
           "id": "geprek-keju",
           "name": "Sensasi Geprek Keju",
-          "description": "Ayam geprek bumbu rempah khas, dilengkapi taburan keju parut yang gurih",
+          "description": "Sensasi geprek dengan sambal sesuai level selera, taburan topping keju yang bikin lidah kita keju lover pasti ketagihan. Sensasi geprek dengan sambal sesuai level selera, taburan topping keju yang bikin lidah kita keju lover pasti ketagihan",
           "price": 16800,
-          "image": "/menu/menu02.png",
+          "image": "/menu/menu02-sensasi_geprek_keju.png",
           "available": true,
           "isPopular": false
         },
         {
           "id": "geprek-telur-asin",
           "name": "Sensasi Ayam Geprek Telur Asin",
-          "description": "Ayam geprek dengan saus telur asin yang creamy dan gurih",
+          "description": "Ayamnya aja sdh enak, dikasih topping an sambal lagi khas Sensasi Geprek dengan dibalur telur asin yang aduhai, wah dijamin kalian bakal pesen lagi",
           "price": 19200,
-          "image": "/menu/menu04.png",
+          "image": "/menu/menu07-sensasi_ayam_geprek_telur_asin.png",
           "available": true,
           "isPopular": false
         },
         {
           "id": "geprek-mozarella",
           "name": "Sensasi Geprek Mozarella",
-          "description": "Ayam geprek bumbu rempah dengan lelehan keju mozarella yang menggoda",
+          "description": "Menu andalan, dari anak anak sampai dewasa pasti ga akan nyesal sama lezatnya ayam dengan topping sambal khas Sensasi Geprek dan dipadukan dengan scrambler telur dan disiram dengan mozzarella",
           "price": 21600,
-          "image": "/menu/menu05.png",
+          "image": "/menu/menu01-sensasi_geprek_mozarella.png",
+          "available": true,
+          "isPopular": true
+        },
+        {
+          "id": "geprek-bakar",
+          "name": "Ayam Geprek Bakar",
+          "description": "Ayam geprek yang dibakar sempurna dengan bumbu rempah khas Sensasi Geprek 38, menghasilkan cita rasa smoky yang gurih dan pedas menggoda, disajikan dengan nasi dan lalapan segar",
+          "price": 17000,
+          "image": "/menu/menu05-ayam_geprek_bakar.jpg",
           "available": true,
           "isPopular": true
         }
@@ -49,18 +58,18 @@
         {
           "id": "mie-goreng-geprek",
           "name": "Sensasi Mie Goreng Geprek",
-          "description": "Mie goreng crispy dengan ayam geprek bumbu rempah khas, pedas nendang",
+          "description": "Siapa yang ga ketagihan akan rasa mie goreng yg fenomenal dan dikolaborasikan dengan ayam dengan topping an sambal tumis khas dari Sensasi Geprek 38. Pasti bikin ketagihan dan ketagihan. Request mie goreng bisa dibikin biasa atau extra pedas",
           "price": 18000,
-          "image": "/menu/menu03.png",
+          "image": "/menu/menu03-sensasi_mie-goreng_geprek.png",
           "available": true,
           "isPopular": true
         },
         {
           "id": "mie-geprek-mozarella",
           "name": "Sensasi Mie Geprek Mozarella",
-          "description": "Mie geprek dengan lelehan keju mozarella yang gurih dan creamy",
+          "description": "Kelezatan mie goreng yg sudah tidak diragukan lagi dipadukan dengan sensasi ayam geprek diberi topping sambal, scrambler dan tentunya bakaran keju mozarella yang bikin lidah anda ketagihan",
           "price": 22800,
-          "image": "/menu/menu07.png",
+          "image": "/menu/menu08-sensasi_mie_geprek_mozarella.png",
           "available": true,
           "isPopular": false
         }
@@ -73,9 +82,9 @@
         {
           "id": "combo-2-ayam",
           "name": "Paket Combo 2 Ayam Geprek (Keju Dan Mozarela)",
-          "description": "Hemat! 2 ayam geprek dengan pilihan keju dan mozarela, cocok untuk berbagi",
+          "description": "Paket 1 nasi + 1 ayam geprek mozarela + 1 ayam geprek keju + lalapan",
           "price": 38400,
-          "image": "/menu/menu06.png",
+          "image": "/menu/menu09-paket_combo-2_ayam_geprek-keju_dan_mozarela.png",
           "available": true,
           "isPopular": false
         }
