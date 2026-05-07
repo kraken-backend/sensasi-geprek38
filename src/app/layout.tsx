@@ -102,7 +102,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="icon" href="/favicon_logo.png" />
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased text-gray-900 bg-[#F5F0E8]/30">
         <Navbar />
